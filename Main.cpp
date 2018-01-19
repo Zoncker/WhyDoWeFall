@@ -56,13 +56,11 @@ void detectAndDisplay( Mat frame )
 
     cvtColor( frame, frame_gray, COLOR_RGB2GRAY ); //transforms into grayscale
     equalizeHist( frame_gray, frame_gray ); //Equalizes the histogram of a grayscale image.
-
-    walmart_cascade.detectMultiScale( frame_gray, walmart, 1.1, 20, 0|CASCADE_SCALE_IMAGE, Size(30, 30) );// Находит объёкты разных размеров во входном изображении
-    //input - Mat CV_8U, walmart - вектор, в котором каждый прямоугольник содержит найденный объект, 1.1 - масштаб
-       for (size_t i = 0; i < walmart.size(); i++ )
+//Finds different-sized objects in input image, which format is Mat CV_8U, "walmart" is a vector where each rectangle contains source obj, 1.1 is scale 
+    walmart_cascade.detectMultiScale( frame_gray, walmart, 1.1, 20, 0|CASCADE_SCALE_IMAGE, Size(30, 30) ); 
     {
         Point center( walmart[i].x + walmart[i].width/2, walmart[i].y + walmart[i].height/2 );
-        ellipse( frame, center, Size( walmart[i].width/2, walmart[i].height/2 ), 0, 0, 360, Scalar( 255, 242, 40 ), 4, 8, 0 );// bgr - бирюзовый
+        ellipse( frame, center, Size( walmart[i].width/2, walmart[i].height/2 ), 0, 0, 360, Scalar( 255, 242, 40 ), 4, 8, 0 );// bgr - cyan
     }
 
     mobil_cascade.detectMultiScale( frame_gray, mobil, 1.1, 20, 0 |CASCADE_SCALE_IMAGE, Size(30, 30) );
@@ -70,7 +68,7 @@ void detectAndDisplay( Mat frame )
        for (size_t i = 0; i < mobil.size(); i++ )
         {
              Point mobil_center( mobil[i].x + mobil[i].width/2, mobil[i].y + mobil[i].height/2 );
-             ellipse( frame, mobil_center, Size( mobil[i].width/2, mobil[i].height/2 ), 0, 0, 360, Scalar( 255, 26, 0 ), 4, 8, 0 ); //синий
+             ellipse( frame, mobil_center, Size( mobil[i].width/2, mobil[i].height/2 ), 0, 0, 360, Scalar( 255, 26, 0 ), 4, 8, 0 ); //blue
         }
 
     subway_cascade.detectMultiScale( frame_gray, subway, 1.1, 20, 0 |CASCADE_SCALE_IMAGE, Size(30, 30) );
@@ -78,7 +76,7 @@ void detectAndDisplay( Mat frame )
        for (size_t i = 0; i < subway.size(); i++ )
         {
              Point subway_center( subway[i].x + subway[i].width/2, subway[i].y + subway[i].height/2 );
-             ellipse( frame, subway_center, Size( subway[i].width/2, subway[i].height/2 ), 0, 0, 360, Scalar( 0, 0, 255 ), 4, 8, 0 ); //красный
+             ellipse( frame, subway_center, Size( subway[i].width/2, subway[i].height/2 ), 0, 0, 360, Scalar( 0, 0, 255 ), 4, 8, 0 ); //red
         }
 
     atnt_cascade.detectMultiScale( frame_gray, atnt, 1.1, 20, 0 |CASCADE_SCALE_IMAGE, Size(30, 30) );
@@ -86,7 +84,7 @@ void detectAndDisplay( Mat frame )
        for (size_t i = 0; i < atnt.size(); i++ )
         {
              Point atnt_center( atnt[i].x + atnt[i].width/2, atnt[i].y + atnt[i].height/2 );
-             ellipse( frame, atnt_center, Size( atnt[i].width/2, atnt[i].height/2 ), 0, 0, 360, Scalar( 49, 63, 61 ), 4, 8, 0 ); //серый
+             ellipse( frame, atnt_center, Size( atnt[i].width/2, atnt[i].height/2 ), 0, 0, 360, Scalar( 49, 63, 61 ), 4, 8, 0 ); //grey
         }
 
     imshow( window_name, frame );
