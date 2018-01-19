@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1495311482 source:d:\whydowefall\hogsvm.cpp
+	"opencv2/objdetect.hpp"
+	"opencv2/videoio.hpp"
+	"opencv2/highgui.hpp"
+	"opencv2/imgproc.hpp"
+	<iostream>
+	<stdio.h>
+
+1495638841 source:d:\whydowefall\main.cpp
+	"opencv2/objdetect.hpp"
+	"opencv2/videoio.hpp"
+	"opencv2/highgui.hpp"
+	"opencv2/imgproc.hpp"
+	<iostream>
+	<stdio.h>
+
